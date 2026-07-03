@@ -27,15 +27,31 @@ export default function PostEditor({ slug, initialData }: PostEditorProps) {
   
   const defaultDate = new Date().toISOString().split('T')[0];
   
+  // Use a function to ensure type safety
+  const getInitialValue = <K extends keyof PostData>(key: K): PostData[K] => {
+    const value = initialData?.[key];
+    const defaults: PostData = {
+      title: '',
+      excerpt: '',
+      content: '',
+      author: session?.user?.name ?? '',
+      date: defaultDate,
+      tags: [],
+      image: '',
+      published: false,
+    };
+    return (value !== undefined ? value : defaults[key]) as PostData[K];
+  };
+  
   const [formData, setFormData] = useState<PostData>({
-    title: initialData?.title || '',
-    excerpt: initialData?.excerpt || '',
-    content: initialData?.content || '',
-    author: initialData?.author || session?.user?.name || '',
-    date: initialData?.date || defaultDate,
-    tags: initialData?.tags || [],
-    image: initialData?.image || '',
-    published: initialData?.published || false,
+    title: getInitialValue('title'),
+    excerpt: getInitialValue('excerpt'),
+    content: getInitialValue('content'),
+    author: getInitialValue('author'),
+    date: getInitialValue('date'),
+    tags: getInitialValue('tags'),
+    image: getInitialValue('image'),
+    published: getInitialValue('published'),
   });
   
   const [tagInput, setTagInput] = useState('');
