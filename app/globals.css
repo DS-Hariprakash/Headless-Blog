@@ -1,0 +1,187 @@
+/* Pixel Art / 2D Kingdom Games Theme */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: 'Press Start 2P', cursive;
+  background: #1a1a2e;
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+/* Pixel art background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 90% 80%, rgba(52, 152, 219, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 50% 50%, rgba(46, 204, 113, 0.05) 0%, transparent 30%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.retro-btn {
+  background: linear-gradient(to bottom, #ffd700, #cc9900);
+  border: 2px solid #000;
+  border-radius: 4px;
+  color: #000;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.8rem;
+  padding: 8px 16px;
+  cursor: pointer;
+  box-shadow: 3px 3px 0px rgba(0,0,0,0.5), inset -1px -1px 0px rgba(255,255,255,0.3);
+}
+
+.retro-btn:hover { background: linear-gradient(to bottom, #ffe473, #ffd700); transform: translateY(-2px); }
+
+.retro-card {
+  background: #16213e;
+  border: 3px solid #2c3e50;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,215,0,0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.retro-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ffd700, #3498db, #e74c3c);
+}
+
+.retro-input {
+  background: #0f3460;
+  border: 2px solid #ffd700;
+  color: #fff;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.7rem;
+  padding: 8px 12px;
+  width: 100%;
+  outline: none;
+}
+
+.retro-input:focus { border-color: #3498db; box-shadow: 0 0 10px rgba(52,152,219,0.5); }
+
+.navbar {
+  background: linear-gradient(to right, #0f3460, #16213e);
+  border-bottom: 3px solid #ffd700;
+  padding: 16px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.8rem;
+  margin: 0 12px;
+  padding: 4px 8px;
+  transition: all 0.2s;
+}
+
+.navbar a:hover { background: rgba(255,215,0,0.2); border: 1px solid #ffd700; }
+
+.header { text-align: center; padding: 32px 16px; background: linear-gradient(to right, #0f3460, #16213e); border-bottom: 3px solid #ffd700; }
+.header h1 { font-size: 2rem; color: #ffd700; text-shadow: 2px 2px 0px #000, -2px -2px 0px #000; letter-spacing: 4px; }
+
+.fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(to bottom, #e74c3c, #c0392b);
+  border: 3px solid #000;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.8rem;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 4px 0px rgba(0,0,0,0.5), inset 0 -2px 0px rgba(255,255,255,0.3);
+}
+
+.fab:hover { background: linear-gradient(to bottom, #ff6b47, #e74c3c); transform: scale(1.05); }
+
+.tag {
+  display: inline-block;
+  background: #0f3460;
+  color: #3498db;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.6rem;
+  margin: 2px;
+  border: 1px solid #2c3e50;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #ffd700;
+  image-rendering: pixelated;
+}
+
+.like-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  color: #e74c3c;
+  font-size: 1.2rem;
+}
+
+.like-btn:hover { color: #ff6b47; transform: scale(1.2); }
+.like-btn.liked { color: #e74c3c; }
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  padding: 24px;
+}
+
+.post-card {
+  background: #16213e;
+  border: 2px solid #2c3e50;
+  border-radius: 8px;
+  padding: 16px;
+  transition: all 0.3s;
+}
+
+.post-card:hover { border-color: #ffd700; transform: translateY(-4px); box-shadow: 0 8px 20px rgba(255,215,0,0.2); }
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0f3460; }
+::-webkit-scrollbar-thumb { background: #ffd700; border-radius: 4px; }
+
+@media (max-width: 768px) {
+  .navbar { flex-direction: column; padding: 16px; }
+  .navbar a { margin: 8px 0; }
+  .posts-grid { grid-template-columns: 1fr; }
+}

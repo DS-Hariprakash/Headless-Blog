@@ -1,0 +1,17 @@
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Install dependencies
+COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
+RUN npm ci
+
+# Copy app
+COPY . .
+
+# Create data directory
+RUN mkdir -p data/posts public/uploads
+
+EXPOSE 3000
+
+CMD ["npm", "run", "dev"]
